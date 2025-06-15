@@ -16,7 +16,7 @@ This is a custom-coded landing page for **Reign Wellness**, a luxury healing and
 
 ---
 
-## 📌 Features
+## Features
 - Responsive layout
 - Transparent fixed header navigation
 - Hero section with CTA
@@ -26,7 +26,7 @@ This is a custom-coded landing page for **Reign Wellness**, a luxury healing and
 
 ---
 
-## 🎨 Branding & Design
+## Branding & Design
 - Color Palette:  
   - Emerald Green `#1A3F22`  
   - Luxe Gold `#F8D15D`  
@@ -35,7 +35,7 @@ This is a custom-coded landing page for **Reign Wellness**, a luxury healing and
 
 ---
 
-## ✨ Designed By
+## Designed By
 **Jasmine R. Parker**  
 Web Developer • Brand Strategist • Creative Technologist  
 [GitHub Profile](https://github.com/shewebdeveloper)
