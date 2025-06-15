@@ -1,4 +1,169 @@
-html {
-  height: 100%;
-  width: 100%;
-}
+  body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #1A3F22;
+    color: #f8f4e3;
+  }
+
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #F8D15D;
+    color: #1A3F22;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #F8D15D;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover {
+    color: #ffffff;
+  }
+
+  .hero {
+    height: 100vh;
+    background: url('https://i.imgur.com/fTXl0bW.jpeg') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 6rem;
+    position: relative;
+  }
+
+  .hero-text {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    color: #F8D15D;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background: #F8D15D;
+    color: #1A3F22;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .cta-button:hover {
+    background: #fff8dc;
+  }
+
+  .services {
+    background-color: #1A3F22;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #F8D15D;
+  }
+
+  .service-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .service {
+    border: 1px solid #F8D15D;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .service h3 {
+    font-size: 1.2rem;
+    color: #F8D15D;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact {
+    background-color: #F8D15D;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #1A3F22;
+  }
+
+  .contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+  }
+
+  button {
+    background: #1A3F22;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .footer {
+    background-color: #1A3F22;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: #F8D15D;
+  }

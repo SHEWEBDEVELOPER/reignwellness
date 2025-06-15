@@ -1,16 +1,677 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reign Wellness - Healing & Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            color: #f8f4e3;
+            background: #1A3F22;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: transparent;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(26, 63, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #F8D15D;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: #f8f4e3;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #F8D15D;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #F8D15D;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 28px;
+            height: 3px;
+            background: #f8f4e3;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i.imgur.com/fTXl0bW.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #f8f4e3;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            letter-spacing: 3px;
+            color: #f8f4e3;
+        }
+
+        .hero-btn {
+            background: #F8D15D;
+            color: #1A3F22;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-btn:hover {
+            background: #fff8dc;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(248, 209, 93, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            background: #ffffff;
+            padding: 120px 0;
+            color: #1A3F22;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 100px;
+            font-weight: 700;
+            color: #1A3F22;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            align-items: start;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 50px 30px;
+            background: #1A3F22;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 63, 34, 0.3);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            background: #0f2f18;
+            border-color: #F8D15D;
+        }
+
+        .service-icon {
+            font-size: 5.5rem;
+            margin-bottom: 35px;
+            color: #fff8dc;
+            display: block;
+        }
+
+        .service-item h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #fff8dc;
+            letter-spacing: 1px;
+        }
+
+        .service-item p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #fff8dc;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #1A3F22, #0f2f18);
+            padding: 120px 0;
+            color: #f8f4e3;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 100px;
+            font-weight: 700;
+            color: #F8D15D;
+            letter-spacing: 2px;
+        }
+
+        .testimonial {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(248, 209, 93, 0.2);
+        }
+
+        .testimonial blockquote {
+            font-size: 2.8rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #F8D15D;
+            line-height: 1.4;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .testimonial cite {
+            font-size: 1.6rem;
+            font-style: normal;
+            color: #F8D15D;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #0f2f18;
+            padding: 120px 0;
+            color: #f8f4e3;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 100px;
+            font-weight: 700;
+            color: #F8D15D;
+            letter-spacing: 2px;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 50px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(248, 209, 93, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 35px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 20px 25px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(248, 209, 93, 0.2);
+            border-radius: 8px;
+            color: #f8f4e3;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(248, 244, 227, 0.6);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #F8D15D;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(248, 209, 93, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #F8D15D;
+            color: #1A3F22;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 0;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .submit-btn:hover {
+            background: #fff8dc;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(248, 209, 93, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1A3F22;
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(248, 209, 93, 0.2);
+        }
+
+        .footer p {
+            color: #F8D15D;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(26, 63, 34, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 80px;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 20px 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .services h2,
+            .testimonials h2,
+            .contact h2 {
+                font-size: 3rem;
+            }
+
+            .testimonial blockquote {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .contact-form {
+                padding: 40px 30px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1A3F22;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #F8D15D;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fff8dc;
+        }
+    </style>
 </head>
-
 <body>
-  Hello world
-  <script src="script.js"></script>
-</body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Reign Wellness</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Healing & Growth</h1>
+        <a href="#services" class="hero-btn">Get Started</a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item fade-in">
+                    <span class="service-icon">✚</span>
+                    <h3>Healing Coaching</h3>
+                    <p>Benefits for your well being.</p>
+                </div>
+                <div class="service-item fade-in">
+                    <span class="service-icon">♥</span>
+                    <h3>Group Support Circles</h3>
+                    <p>Assist a sense of community.</p>
+                </div>
+                <div class="service-item fade-in">
+                    <span class="service-icon">📔</span>
+                    <h3>Self-Love Digital Journal</h3>
+                    <p>For Introspection in-tool.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Client Testimonials</h2>
+            <div class="testimonial fade-in">
+                <blockquote>"Jass helped me rediscover my voice. I'm forever grateful."</blockquote>
+                <cite>—T.B.</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form class="contact-form fade-in">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Designed by Jasmine R. Parker</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenu.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(9px, 6px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(8px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const spans = mobileMenu.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Simple validation
+            if (name && email && message) {
+                // Simulate form submission
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                const originalBg = submitBtn.style.background;
+                
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                submitBtn.style.background = '#fff8dc';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Message Sent!';
+                    submitBtn.style.background = '#27ae60';
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '#F8D15D';
+                        this.reset();
+                    }, 2000);
+                }, 1500);
+            }
+        });
+
+
+
+        // Enhanced hover effects for service items
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
 </html>
